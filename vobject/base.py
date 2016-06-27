@@ -333,7 +333,10 @@ class ContentLine(VBase):
             qp = True
             self.singletonparams.remove('QUOTED-PRINTABLE')
         if qp:
-            self.value = self.value.decode('quoted-printable')
+            try:
+               self.value = self.value.decode('quoted-printable')
+            except:
+               self.value = ''
 
     @classmethod
     def duplicate(clz, copyit):
