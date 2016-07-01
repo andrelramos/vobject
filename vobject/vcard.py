@@ -134,7 +134,10 @@ class VCardTextBehavior(behavior.Behavior):
                 line.encoding_param = cls.base64string
             encoding = getattr(line, 'encoding_param', None)
             if encoding:
-                line.value = line.value.decode('base64')
+                try:
+                    line.value = line.value.decode('base64')
+                except AttributeError:
+                    pass
             else:
                 line.value = stringToTextValues(line.value)[0]
             line.encoded=False
