@@ -334,8 +334,8 @@ class ContentLine(VBase):
             self.singletonparams.remove('QUOTED-PRINTABLE')
         if qp:
             try:
-               self.value = self.value.decode('quoted-printable')
-            except:
+                self.value = self.value.decode('quoted-printable')
+            except AttributeError:
                self.value = ''
 
     @classmethod
